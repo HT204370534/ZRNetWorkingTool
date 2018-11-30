@@ -205,7 +205,7 @@ static ZRNetworkingTool * _manager = nil;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        NSLog(@"臣妾做不到啊 ~ （上传失败）");
+        NSLog(@"臣妾做不到啊 ~ （上传失败）/n Error:%@",error);
         
     }];
     

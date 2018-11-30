@@ -17,14 +17,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self testUplod];
+    
+    
+    [[ZRNetworkingTool shareTool] requestWithMethod:post_ZRRequest url:@"http://39.106.209.83:88/Information/GetSwiper" parameters:nil finishedBlock:^(id responseObj, NSError *error) {
+       
+        NSLog(@"请求：%@",responseObj);
+        
+    }];
+    
     
 }
 
 
 #pragma mark - 测试上传
-- (void)testuplod{
+- (void)testUplod{
     
-    [[ZRNetworkingTool shareTool] uploadFilesWithUrl:@"" parameters:nil filesKey:@"files" filesPath:@[] progress:nil finishedBlock:^(id responseObj, NSError *error) {
+    [[ZRNetworkingTool shareTool] uploadFilesWithUrl:@"http://39.106.209.83:88/Information/GetSwiper" parameters:nil filesKey:@"files" filesPath:@[[UIImage imageNamed:@"美术"]] progress:nil finishedBlock:^(id responseObj, NSError *error) {
        
         NSLog(@"上传结果");
     }];

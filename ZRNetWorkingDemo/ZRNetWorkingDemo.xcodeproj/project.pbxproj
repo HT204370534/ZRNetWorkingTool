@@ -1,0 +1,423 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		14B1347E31CD6F7F525E2D53 /* Pods_ZRNetWorkingDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A66A64D09A4FDD105A8675A /* Pods_ZRNetWorkingDemo.framework */; };
+		3572060721B15BAF00C2E5EC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3572060621B15BAF00C2E5EC /* AppDelegate.m */; };
+		3572060A21B15BAF00C2E5EC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3572060921B15BAF00C2E5EC /* ViewController.m */; };
+		3572060D21B15BAF00C2E5EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3572060B21B15BAF00C2E5EC /* Main.storyboard */; };
+		3572060F21B15BB000C2E5EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3572060E21B15BB000C2E5EC /* Assets.xcassets */; };
+		3572061221B15BB000C2E5EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3572061021B15BB000C2E5EC /* LaunchScreen.storyboard */; };
+		3572061521B15BB000C2E5EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3572061421B15BB000C2E5EC /* main.m */; };
+		3572061D21B15C7C00C2E5EC /* ZRNetworkingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3572061C21B15C7C00C2E5EC /* ZRNetworkingTool.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3572060221B15BAF00C2E5EC /* ZRNetWorkingDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZRNetWorkingDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3572060521B15BAF00C2E5EC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3572060621B15BAF00C2E5EC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3572060821B15BAF00C2E5EC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3572060921B15BAF00C2E5EC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3572060C21B15BAF00C2E5EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3572060E21B15BB000C2E5EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3572061121B15BB000C2E5EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3572061321B15BB000C2E5EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3572061421B15BB000C2E5EC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3572061B21B15C7C00C2E5EC /* ZRNetworkingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRNetworkingTool.h; sourceTree = "<group>"; };
+		3572061C21B15C7C00C2E5EC /* ZRNetworkingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRNetworkingTool.m; sourceTree = "<group>"; };
+		3A609628373280A1FFC208B2 /* Pods-ZRNetWorkingDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZRNetWorkingDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZRNetWorkingDemo/Pods-ZRNetWorkingDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		4F99F5B267EE93915D9F6187 /* Pods-ZRNetWorkingDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZRNetWorkingDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZRNetWorkingDemo/Pods-ZRNetWorkingDemo.release.xcconfig"; sourceTree = "<group>"; };
+		8A66A64D09A4FDD105A8675A /* Pods_ZRNetWorkingDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZRNetWorkingDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		357205FF21B15BAF00C2E5EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14B1347E31CD6F7F525E2D53 /* Pods_ZRNetWorkingDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		357205F921B15BAF00C2E5EC = {
+			isa = PBXGroup;
+			children = (
+				3572060521B15BAF00C2E5EC /* AppDelegate.h */,
+				3572060621B15BAF00C2E5EC /* AppDelegate.m */,
+				3572060421B15BAF00C2E5EC /* ZRNetWorkingDemo */,
+				3572060321B15BAF00C2E5EC /* Products */,
+				8DCCB7FE933E61E78138729F /* Pods */,
+				58DCF30F08161E19B3007FDB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3572060321B15BAF00C2E5EC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3572060221B15BAF00C2E5EC /* ZRNetWorkingDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3572060421B15BAF00C2E5EC /* ZRNetWorkingDemo */ = {
+			isa = PBXGroup;
+			children = (
+				3572061F21B15C8E00C2E5EC /* ZRNetWorking */,
+				3572060821B15BAF00C2E5EC /* ViewController.h */,
+				3572060921B15BAF00C2E5EC /* ViewController.m */,
+				3572060B21B15BAF00C2E5EC /* Main.storyboard */,
+				3572060E21B15BB000C2E5EC /* Assets.xcassets */,
+				3572061021B15BB000C2E5EC /* LaunchScreen.storyboard */,
+				3572061321B15BB000C2E5EC /* Info.plist */,
+				3572061421B15BB000C2E5EC /* main.m */,
+			);
+			path = ZRNetWorkingDemo;
+			sourceTree = "<group>";
+		};
+		3572061F21B15C8E00C2E5EC /* ZRNetWorking */ = {
+			isa = PBXGroup;
+			children = (
+				3572061B21B15C7C00C2E5EC /* ZRNetworkingTool.h */,
+				3572061C21B15C7C00C2E5EC /* ZRNetworkingTool.m */,
+			);
+			path = ZRNetWorking;
+			sourceTree = "<group>";
+		};
+		58DCF30F08161E19B3007FDB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8A66A64D09A4FDD105A8675A /* Pods_ZRNetWorkingDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8DCCB7FE933E61E78138729F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3A609628373280A1FFC208B2 /* Pods-ZRNetWorkingDemo.debug.xcconfig */,
+				4F99F5B267EE93915D9F6187 /* Pods-ZRNetWorkingDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3572060121B15BAF00C2E5EC /* ZRNetWorkingDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3572061821B15BB000C2E5EC /* Build configuration list for PBXNativeTarget "ZRNetWorkingDemo" */;
+			buildPhases = (
+				14BB7C604B67F0E52163CCD1 /* [CP] Check Pods Manifest.lock */,
+				357205FE21B15BAF00C2E5EC /* Sources */,
+				357205FF21B15BAF00C2E5EC /* Frameworks */,
+				3572060021B15BAF00C2E5EC /* Resources */,
+				80EF95AA99E98307EC9EE78B /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZRNetWorkingDemo;
+			productName = ZRNetWorkingDemo;
+			productReference = 3572060221B15BAF00C2E5EC /* ZRNetWorkingDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		357205FA21B15BAF00C2E5EC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "黄涛";
+				TargetAttributes = {
+					3572060121B15BAF00C2E5EC = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = 357205FD21B15BAF00C2E5EC /* Build configuration list for PBXProject "ZRNetWorkingDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 357205F921B15BAF00C2E5EC;
+			productRefGroup = 3572060321B15BAF00C2E5EC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3572060121B15BAF00C2E5EC /* ZRNetWorkingDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3572060021B15BAF00C2E5EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3572061221B15BB000C2E5EC /* LaunchScreen.storyboard in Resources */,
+				3572060F21B15BB000C2E5EC /* Assets.xcassets in Resources */,
+				3572060D21B15BAF00C2E5EC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		14BB7C604B67F0E52163CCD1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZRNetWorkingDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		80EF95AA99E98307EC9EE78B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ZRNetWorkingDemo/Pods-ZRNetWorkingDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZRNetWorkingDemo/Pods-ZRNetWorkingDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		357205FE21B15BAF00C2E5EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3572060A21B15BAF00C2E5EC /* ViewController.m in Sources */,
+				3572061521B15BB000C2E5EC /* main.m in Sources */,
+				3572060721B15BAF00C2E5EC /* AppDelegate.m in Sources */,
+				3572061D21B15C7C00C2E5EC /* ZRNetworkingTool.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3572060B21B15BAF00C2E5EC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3572060C21B15BAF00C2E5EC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3572061021B15BB000C2E5EC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3572061121B15BB000C2E5EC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3572061621B15BB000C2E5EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3572061721B15BB000C2E5EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3572061921B15BB000C2E5EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A609628373280A1FFC208B2 /* Pods-ZRNetWorkingDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4ZKW2QH5J7;
+				INFOPLIST_FILE = ZRNetWorkingDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zero.ZRNetWorkingDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3572061A21B15BB000C2E5EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F99F5B267EE93915D9F6187 /* Pods-ZRNetWorkingDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4ZKW2QH5J7;
+				INFOPLIST_FILE = ZRNetWorkingDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zero.ZRNetWorkingDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		357205FD21B15BAF00C2E5EC /* Build configuration list for PBXProject "ZRNetWorkingDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3572061621B15BB000C2E5EC /* Debug */,
+				3572061721B15BB000C2E5EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3572061821B15BB000C2E5EC /* Build configuration list for PBXNativeTarget "ZRNetWorkingDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3572061921B15BB000C2E5EC /* Debug */,
+				3572061A21B15BB000C2E5EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 357205FA21B15BAF00C2E5EC /* Project object */;
+}

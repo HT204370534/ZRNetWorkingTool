@@ -205,7 +205,12 @@ static ZRNetworkingTool * _manager = nil;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        NSLog(@"臣妾做不到啊 ~ （上传失败）/n Error:%@",error);
+        
+        NSError * underError = error.userInfo[@"NSUnderlyingError"];
+        NSData * responseData = underError.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
+        NSString * result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"😭😭 臣妾做不到啊 ~ （上传失败）😭😭 \n 💩💩 错误信息:%@ \n 💩💩 返回结果 :%@",error.userInfo[@"NSDebugDescription"],result);
         
     }];
     

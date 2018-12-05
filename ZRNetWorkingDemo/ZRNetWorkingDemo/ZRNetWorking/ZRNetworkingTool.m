@@ -179,12 +179,15 @@ static ZRNetworkingTool * _manager = nil;
             [NSData dataWithContentsOfURL:file];
             
             NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-            formatter.dateFormat = @"yyyyMMddHHmmss";
+            formatter.dateFormat = @"yyyyMMddHHmmssSSS";
             NSString * dataStr = [formatter stringFromDate:[NSDate date]];
             NSString * formatStr = [file isKindOfClass:[UIImage class]] ?
             @"jpg":@"mp4";
             NSString * fileName = [NSString stringWithFormat:@"%@.%@",dataStr,formatStr];
             
+            // data加密成Base64形式的NSData
+//            NSData *base64Data = [fileData base64EncodedDataWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+
             NSLog(@"上传文件名 ： %@",fileName);
             [formData appendPartWithFileData:fileData name:filesKey fileName:fileName mimeType:@"multipart/form-data"];
     

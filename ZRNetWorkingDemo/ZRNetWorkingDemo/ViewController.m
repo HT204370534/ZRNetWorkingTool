@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ZRNetworkingTool.h"
+#import <AFNetworking/AFNetworking.h>
 @interface ViewController ()
 
 @end
@@ -20,11 +21,30 @@
     [self testUplod];
     
     
-    [[ZRNetworkingTool shareTool] requestWithMethod:post_ZRRequest url:@"http://39.106.209.83:88/Information/GetSwiper" parameters:nil finishedBlock:^(id responseObj, NSError *error) {
-       
-        NSLog(@"请求：%@",responseObj);
-        
-    }];
+//    [[ZRNetworkingTool shareTool] requestWithMethod:post_ZRRequest url:@"http://39.106.209.83:88/Information/GetSwiper" parameters:nil finishedBlock:^(id responseObj, NSError *error) {
+//
+//        NSLog(@"请求：%@",responseObj);
+//
+//    }];
+//
+    
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+//    
+//    [manager POST:@"http://118.24.215.116/index.php/home/api/uploadPic" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+//        
+//    } progress:^(NSProgress * _Nonnull uploadProgress) {
+//        
+//    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//       
+//        
+//        NSLog(@"错误信息：%@",error);
+//        
+//        
+//    }];
+//    
     
     
 }
@@ -33,9 +53,11 @@
 #pragma mark - 测试上传
 - (void)testUplod{
     
-    [[ZRNetworkingTool shareTool] uploadFilesWithUrl:@"http://39.106.209.83:88/Information/GetSwiper" parameters:nil filesKey:@"files" filesPath:@[[UIImage imageNamed:@"美术"]] progress:nil finishedBlock:^(id responseObj, NSError *error) {
+    NSArray * arr = @[[UIImage imageNamed:@"文学"],[UIImage imageNamed:@"美术"]];
+    
+    [[ZRNetworkingTool shareTool] uploadFilesWithUrl:@"http://118.24.215.116/index.php/home/api/uploadPic" parameters:nil filesKey:@"files[]" filesPath:arr progress:nil finishedBlock:^(id responseObj, NSError *error) {
        
-        NSLog(@"上传结果");
+        NSLog(@"上传结果:%@",responseObj);
     }];
     
 }

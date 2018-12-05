@@ -8,7 +8,7 @@
 
 #import <AFNetworking/AFNetworking.h>
 
-#define BASE_URL @"http://39.106.209.83:88/"
+#define BASE_URL @"http://118.24.215.116/index.php/home/"
 
 typedef enum RequestMethod{
     post_ZRRequest = 0,

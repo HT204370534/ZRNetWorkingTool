@@ -17,17 +17,25 @@ static ZRNetworkingTool * _manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _manager = [[self alloc] initWithBaseURL:[NSURL URLWithString:BASE_URL] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-        _manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/plain", @"text/javascript", @"text/json", @"text/html", nil];
+        _manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain",@"text/html",@"text/html",@"text/json", @"multipart/form-data", @"application/json", @"image/jpeg", @"image/png", @"application/octet-stream", nil];
         //请求超时
         _manager.requestSerializer.timeoutInterval = 15;
         //去掉返回空值
         ((AFJSONResponseSerializer *)_manager.responseSerializer).removesKeysWithNullValues = YES;
  
         //设置解析为Jason
-        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
         
 //        _manager.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
-    
+        
+        AFSecurityPolicy *securityPolicy = [AFSecurityPolicy defaultPolicy];
+        securityPolicy.validatesDomainName = NO;
+        securityPolicy.allowInvalidCertificates = YES;
+   
+        _manager.securityPolicy = securityPolicy;
+        
+        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        _manager.responseSerializer = [AFJSONResponseSerializer serializer];
     });
     return _manager;
 }
@@ -37,7 +45,7 @@ static ZRNetworkingTool * _manager = nil;
     
     NSMutableDictionary * params = [[NSMutableDictionary alloc] initWithDictionary:parameters];
     //这里设置公用参数
-    
+
     //网络状态指示器
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
@@ -151,7 +159,7 @@ static ZRNetworkingTool * _manager = nil;
     
     if (!filesPath.hash){
        NSLog(@"骚年，你没有选择 file");
-       return nil;
+//       return nil;
     }
         
     //这里设置公用参数
@@ -212,6 +220,8 @@ static ZRNetworkingTool * _manager = nil;
         NSError * underError = error.userInfo[@"NSUnderlyingError"];
         NSData * responseData = underError.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey];
         NSString * result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"错误 ：%@",error);
         
         NSLog(@"😭😭 臣妾做不到啊 ~ （上传失败）😭😭 \n 💩💩 错误信息:%@ \n 💩💩 返回结果 :%@",error.userInfo[@"NSDebugDescription"],result);
         

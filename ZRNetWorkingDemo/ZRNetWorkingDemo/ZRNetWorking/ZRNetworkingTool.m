@@ -13,26 +13,24 @@
 static ZRNetworkingTool * _manager = nil;
 + (instancetype)shareTool{
     
-
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _manager = [[self alloc] initWithBaseURL:[NSURL URLWithString:BASE_URL] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-        _manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain",@"text/html",@"text/html",@"text/json", @"multipart/form-data", @"application/json", @"image/jpeg", @"image/png", @"application/octet-stream", nil];
+        _manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain",@"text/html",@"text/json", @"multipart/form-data", @"application/json", @"image/jpeg", @"image/png", @"application/octet-stream", nil];
         //请求超时
         _manager.requestSerializer.timeoutInterval = 15;
         //去掉返回空值
         ((AFJSONResponseSerializer *)_manager.responseSerializer).removesKeysWithNullValues = YES;
- 
-        //设置解析为Jason
-    
         
-//        _manager.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+        //缓存设置:从原始地址加载，不使用缓存
+        //_manager.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
         
+        /* 跳过证书检查
         AFSecurityPolicy *securityPolicy = [AFSecurityPolicy defaultPolicy];
         securityPolicy.validatesDomainName = NO;
         securityPolicy.allowInvalidCertificates = YES;
-   
         _manager.securityPolicy = securityPolicy;
+         */
         
         _manager.requestSerializer = [AFJSONRequestSerializer serializer];
         _manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -157,13 +155,12 @@ static ZRNetworkingTool * _manager = nil;
 #pragma mark - 上传
 - (NSURLSessionDataTask *)uploadFilesWithUrl:(NSString *)url parameters:(NSDictionary *)parameters filesKey:(NSString *)filesKey filesPath:(NSArray *)filesPath progress:(void (^)(NSProgress *))progress finishedBlock:(void (^)(id responseObj, NSError * error))finished{
     
-    if (!filesPath.hash){
-       NSLog(@"骚年，你没有选择 file");
-//       return nil;
-    }
+    if (!filesPath.hash) NSLog(@"骚年，你没有选择 file");
         
     //这里设置公用参数
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:parameters];
+    //Multipart协议 可以传 键值对、文件 但不能 都为空！ 此参数防止 两者为空 出现 error 999 问题 (别问为什么用这个，我就想装个B ~)
+    params[@"ZRNetWorking"] = @"is very nice";
     
     /* 在这里添加每个接口都有的参数
     params[@"version"] = [[NSBundle mainBundle].infoDictionary objectForKey:JKCurrentVersionKey];//[[NSUserDefaults standardUserDefaults] stringForKey:JKCurrentVersionKey];
@@ -194,7 +191,7 @@ static ZRNetworkingTool * _manager = nil;
             NSString * fileName = [NSString stringWithFormat:@"%@.%@",dataStr,formatStr];
             
             // data加密成Base64形式的NSData
-//            NSData *base64Data = [fileData base64EncodedDataWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+            //NSData *base64Data = [fileData base64EncodedDataWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
 
             NSLog(@"上传文件名 ： %@",fileName);
             [formData appendPartWithFileData:fileData name:filesKey fileName:fileName mimeType:@"multipart/form-data"];
@@ -226,7 +223,6 @@ static ZRNetworkingTool * _manager = nil;
         NSLog(@"😭😭 臣妾做不到啊 ~ （上传失败）😭😭 \n 💩💩 错误信息:%@ \n 💩💩 返回结果 :%@",error.userInfo[@"NSDebugDescription"],result);
         
     }];
-    
     
 }
 

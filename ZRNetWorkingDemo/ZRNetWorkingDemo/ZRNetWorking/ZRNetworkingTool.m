@@ -153,7 +153,7 @@ static ZRNetworkingTool * _manager = nil;
 
 
 #pragma mark - 上传
-- (NSURLSessionDataTask *)uploadFilesWithUrl:(NSString *)url parameters:(NSDictionary *)parameters filesKey:(NSString *)filesKey filesPath:(NSArray *)filesPath progress:(void (^)(NSProgress *))progress finishedBlock:(void (^)(id responseObj, NSError * error))finished{
+- (NSURLSessionDataTask *)uploadFilesWithUrl:(NSString *)url parameters:(NSDictionary *)parameters filesKey:(NSString *)filesKey filesPath:(NSArray *)filesPath progress:(void (^)(NSProgress * uploadProgress))progress finishedBlock:(void (^)(id responseObj, NSError * error))finished{
     
     if (!filesPath.hash) NSLog(@"骚年，你没有选择 file");
         

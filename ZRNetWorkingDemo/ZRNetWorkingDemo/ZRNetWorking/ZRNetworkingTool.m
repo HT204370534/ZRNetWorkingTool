@@ -152,7 +152,10 @@ static ZRNetworkingTool * _manager = nil;
 }
 
 
-#pragma mark - 上传
+#pragma mark - 上传: multipart/form-data
+/** Multipart协议 上传文件
+ *  简介:将图片以表单形式传给后台
+ */
 - (NSURLSessionDataTask *)uploadFilesWithUrl:(NSString *)url parameters:(NSDictionary *)parameters filesKey:(NSString *)filesKey filesPath:(NSArray *)filesPath progress:(void (^)(NSProgress * uploadProgress))progress finishedBlock:(void (^)(id responseObj, NSError * error))finished{
     
     if (!filesPath.hash) NSLog(@"骚年，你没有选择 file");
@@ -179,23 +182,9 @@ static ZRNetworkingTool * _manager = nil;
         
         for (id file in filesPath) {
             
-            NSData * fileData = [file isKindOfClass:[UIImage class]] ?
-            [self compressWithImg:file MaxLength:1024 * 2]:
-            [NSData dataWithContentsOfURL:file];
-            
-            NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-            formatter.dateFormat = @"yyyyMMddHHmmssSSS";
-            NSString * dataStr = [formatter stringFromDate:[NSDate date]];
-            NSString * formatStr = [file isKindOfClass:[UIImage class]] ?
-            @"jpg":@"mp4";
-            NSString * fileName = [NSString stringWithFormat:@"%@.%@",dataStr,formatStr];
-            
-            // data加密成Base64形式的NSData
-            //NSData *base64Data = [fileData base64EncodedDataWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
-
-            NSLog(@"上传文件名 ： %@",fileName);
-            [formData appendPartWithFileData:fileData name:filesKey fileName:fileName mimeType:@"multipart/form-data"];
-    
+           NSDictionary * dic = [self getDataWithFile:file];
+     
+            [formData appendPartWithFileData:dic[@"fileData"] name:filesKey fileName:dic[@"fileName"] mimeType:@"multipart/form-data"];
         }
         
     } progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -226,7 +215,64 @@ static ZRNetworkingTool * _manager = nil;
     
 }
 
+#pragma mark - 上传:POST
+/** POST 上传文件 (不推荐这种方式)
+ *  简介:将图片作为参数一起上传后台
+ *  fileInfo[@{@"fileName":@"123.jpg",@"fileData":@"data"}]
+ */
+- (NSURLSessionDataTask *)postFilesWithUrl:(NSString *)url parameters:(NSDictionary *)parameters filesKey:(NSString *)filesKey fileInfo:(NSArray *)fileInfo progress:(void (^)(NSProgress * uploadProgress))progress finishedBlock:(void (^)(id responseObj, NSError * error))finished{
 
+    //这里设置公用参数
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:parameters];
+    
+    /* 在这里添加每个接口都有的参数
+     params[@"version"] = [[NSBundle mainBundle].infoDictionary objectForKey:JKCurrentVersionKey];//[[NSUserDefaults standardUserDefaults] stringForKey:JKCurrentVersionKey];
+     
+     params[@"time"] = @([JKDateTool getCurrentTimeStamp]).stringValue;
+     
+     NSString *alkey = [JKNetworkingTool alkeySortMD5WithParamDict:params extraStrings:nil];
+     params[@"alkey"] = alkey;
+     
+     */
+    
+    NSMutableArray * filesPath = [[NSMutableArray alloc] init];
+    
+    if (filesPath.hash) {
+        
+        for (id file in (NSArray *)parameters[filesKey]) {
+            
+            NSDictionary * dic = [self getDataWithFile:file];
+
+            NSMutableDictionary * fileInfoDic = [NSMutableDictionary dictionary];
+            fileInfoDic[fileInfo.firstObject] = dic[@"fileName"];
+            fileInfoDic[fileInfo.lastObject] = dic[@"fileData"];
+            [filesPath addObject:fileInfoDic];
+        }
+        
+        [params setObject:filesPath forKey:filesKey];
+    }
+    
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
+    
+    return [self POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSError * error = [self requestSuccess:responseObject];
+        id obj = error == nil ? responseObject : nil;
+        
+        !finished ? : finished(obj,error);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        NSLog(@"\n 问题链接 -> %@ \n 请求方式:POST \n 参数:%@ \n",[NSString stringWithFormat:@"%@%@",BASE_URL,url],params);
+        !finished ? : finished(nil,error);
+        
+        
+    }];
+    
+}
 
 #pragma mark - 请求成功处理
 - (NSError *)requestSuccess:(id  _Nullable )responseObject {
@@ -297,6 +343,30 @@ static ZRNetworkingTool * _manager = nil;
     //NSLog(@"After compressing size loop, image size = %ld KB", data.length / 1024);
     return data;
 }
+
+#pragma mark - 设置文件 名称 + 流
+- (NSDictionary * )getDataWithFile:(id)file{
+    
+    NSData * fileData = [file isKindOfClass:[UIImage class]] ?
+    [self compressWithImg:file MaxLength:1024 * 2]:
+    [NSData dataWithContentsOfURL:file];
+    
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyyMMddHHmmssSSS";
+    NSString * dataStr = [formatter stringFromDate:[NSDate date]];
+    NSString * formatStr = [file isKindOfClass:[UIImage class]] ?
+    @"jpg":@"mp4";
+    NSString * fileName = [NSString stringWithFormat:@"%@.%@",dataStr,formatStr];
+    
+    // data加密成Base64形式的NSData
+    //NSData *base64Data = [fileData base64EncodedDataWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+    
+    NSLog(@"上传文件名 ： %@",fileName);
+    
+    return @{@"fileName":fileName,@"fileData":fileData};
+
+}
+
 
 
 @end

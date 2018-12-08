@@ -26,6 +26,12 @@ typedef enum RequestMethod{
 /** 上传数据 filesKey:例 单图:files 多图:files[] 具体和后台拟定 */
 - (NSURLSessionDataTask *)uploadFilesWithUrl:(NSString *)url parameters:(NSDictionary *)parameters filesKey:(NSString *)filesKey filesPath:(NSArray *)filesPath progress:(void (^)(NSProgress * uploadProgress))progress finishedBlock:(void (^)(id responseObj, NSError * error))finished;
 
+/** POST 上传文件 (不推荐这种方式)
+ *  简介:将图片作为参数一起上传后台
+ *  fileInfo[@{@"fileName":@"123.jpg",@"fileData":@"data"}]
+ */
+- (NSURLSessionDataTask *)postFilesWithUrl:(NSString *)url parameters:(NSDictionary *)parameters filesKey:(NSString *)filesKey fileInfo:(NSArray *)fileInfo progress:(void (^)(NSProgress * uploadProgress))progress finishedBlock:(void (^)(id responseObj, NSError * error))finished;
+
 /** 服务器请求(webService) */
 - (NSURLSessionDataTask *)requestFromWebService:(NSString *)serviceIP subset:(NSString *)subsetStr parameters:(NSDictionary *)parameters soapVersion:(CGFloat)soapVersion  finishedBlock:(void(^)(id responseObj))finished;
 

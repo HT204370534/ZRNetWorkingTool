@@ -35,6 +35,8 @@ typedef enum RequestMethod{
 /** 服务器请求(webService) */
 - (NSURLSessionDataTask *)requestFromWebService:(NSString *)serviceIP subset:(NSString *)subsetStr parameters:(NSDictionary *)parameters soapVersion:(CGFloat)soapVersion  finishedBlock:(void(^)(id responseObj))finished;
 
+/** 下载 默认:存储到沙盒 */
+- (void)downloadFileWithUrl:(NSString *)url progress:(void (^)(NSProgress * downloadProgress))progress finishedBlock:(void (^)(NSURL * filePath, NSError * error))finished;
 
 
 @end

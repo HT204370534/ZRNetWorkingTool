@@ -274,6 +274,33 @@ static ZRNetworkingTool * _manager = nil;
     
 }
 
+#pragma mark - 下载
+- (void)downloadFileWithUrl:(NSString *)url progress:(void (^)(NSProgress * downloadProgress))progress finishedBlock:(void (^)(NSURL * filePath, NSError * error))finished{
+    
+    NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    
+    [[self downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+        NSLog(@"下载进度：%.0f％", downloadProgress.fractionCompleted * 100);
+        !progress ? : progress(downloadProgress);
+        
+    } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+        
+        /* 下载路径 */
+        NSString * filePath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:url.lastPathComponent];
+        
+        /* 设定下载到的位置 */
+        return [NSURL fileURLWithPath:filePath];
+        
+    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+        
+        error ? NSLog(@"下载失败") : NSLog(@"下载成功");
+        !finished ? : finished(filePath,error);
+        
+    }] resume];
+    
+}
+
 #pragma mark - 请求成功处理
 - (NSError *)requestSuccess:(id  _Nullable )responseObject {
     
